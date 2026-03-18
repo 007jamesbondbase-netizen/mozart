@@ -7,7 +7,7 @@ load_dotenv()
 # CONFIG
 # ============================================================
 ANTHROPIC_API_KEY_ENV = os.getenv("ANTHROPIC_API_KEY", "")
-RTMP_URL              = os.getenv("RTMP_URL", "rtmp://165.227.91.241:1935/f649f97b46194e7c9d35364d7cf80bfc")
+RTMP_URL              = os.getenv("RTMP_URL", "rtmp://165.227.91.241:1935/live/f649f97b46194e7c9d35364d7cf80bfc")
 WIDTH, HEIGHT, FPS = 1280, 720, 30
 SAMPLE_RATE    = 44100
 SAMPLES_PER_FRAME = SAMPLE_RATE // FPS
@@ -527,7 +527,6 @@ ffmpeg_cmd = [
     '-sc_threshold', '0',
     '-c:a', 'aac', '-b:a', '192k', '-ar', str(SAMPLE_RATE),
     '-f', 'flv', '-flvflags', 'no_duration_filesize',
-    '-rtmp_live', 'live',
     RTMP_URL,
 ]
 process = subprocess.Popen(ffmpeg_cmd, pass_fds=[rv, ra])
