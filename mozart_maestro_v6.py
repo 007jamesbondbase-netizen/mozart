@@ -527,6 +527,7 @@ ffmpeg_cmd = [
     '-sc_threshold', '0',
     '-c:a', 'aac', '-b:a', '192k', '-ar', str(SAMPLE_RATE),
     '-f', 'flv', '-flvflags', 'no_duration_filesize',
+    '-rtmp_live', 'live',
     RTMP_URL,
 ]
 process = subprocess.Popen(ffmpeg_cmd, pass_fds=[rv, ra])
